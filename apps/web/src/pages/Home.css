@@ -1,0 +1,223 @@
+.hero {
+  position: relative;
+  min-height: calc(100vh - var(--header-h));
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero__media {
+  position: absolute;
+  inset: -20% 0 -20%;
+  z-index: 0;
+  will-change: transform;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.hero__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 40%;
+  transform: scale(1.12);
+  transform-origin: center center;
+}
+
+.hero__glow {
+  position: absolute;
+  inset: auto -10% -20% 40%;
+  height: 55%;
+  background: radial-gradient(ellipse at center, rgba(196, 60, 46, 0.35), transparent 70%);
+  z-index: 1;
+  pointer-events: none;
+  will-change: transform;
+  transform: translateZ(0);
+}
+
+.hero__content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding-bottom: clamp(3rem, 8vh, 6rem);
+  padding-top: 4rem;
+  display: grid;
+  grid-template-columns: 1fr minmax(240px, 0.42fr);
+  gap: var(--gap-lg);
+  align-items: end;
+}
+
+.hero__eyebrow {
+  grid-column: 1 / -1;
+  will-change: transform;
+}
+
+.hero__title {
+  grid-column: 1 / -1;
+}
+
+.hero__caps {
+  display: block;
+  width: 100%;
+  /* 7 букв AUTODOC — кегль, чтобы строка помещалась в контейнер */
+  font-size: clamp(2.75rem, 10.5vw, 8.5rem);
+  line-height: 0.85;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+  color: #f2ebe3;
+  will-change: transform;
+  overflow-wrap: normal;
+  white-space: nowrap;
+}
+
+.hero__side {
+  grid-column: 2;
+  max-width: 45vw;
+  will-change: transform;
+}
+
+.hero__lead {
+  font-size: 1.0625rem;
+  color: #f2ebe3;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
+  margin-bottom: 1.5rem;
+}
+
+.hero__cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.home-pitch {
+  background: var(--bg-light);
+  color: var(--text-on-light);
+}
+
+.home-pitch__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--gap-lg);
+  align-items: start;
+}
+
+.home-pitch__title {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: -0.01em;
+  max-width: 12ch;
+}
+
+.sticky-heading {
+  position: sticky;
+  top: calc(var(--header-h) + 1.5rem);
+}
+
+.home-pitch__copy {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  font-size: 1.125rem;
+  color: #3d3832;
+  padding-top: 0.5rem;
+}
+
+.home-steps__title {
+  margin-top: 0.75rem;
+  margin-bottom: 2.5rem;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  letter-spacing: -0.01em;
+  max-width: 16ch;
+}
+
+.home-steps__grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--gap-lg);
+}
+
+.lift-card {
+  position: relative;
+  padding: 1.5rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  transition:
+    transform var(--duration-mid) var(--ease),
+    box-shadow var(--duration-mid) var(--ease),
+    z-index 0s;
+  z-index: 1;
+}
+
+.lift-card:hover {
+  transform: translateY(-14px) scale(1.02);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
+  z-index: 3;
+}
+
+.lift-card__index {
+  display: block;
+  font-family: var(--font-display);
+  color: var(--accent);
+  margin-bottom: 1.25rem;
+  font-size: 0.875rem;
+}
+
+.lift-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.lift-card p {
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}
+
+.home-cta {
+  background: var(--bg-light);
+  color: var(--text-on-light);
+}
+
+.home-cta__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 40rem;
+}
+
+.home-cta h2 {
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  letter-spacing: -0.01em;
+}
+
+.home-cta .lead {
+  color: #5c564e;
+}
+
+@media (max-width: 960px) {
+  .hero__content {
+    grid-template-columns: 1fr;
+  }
+
+  .hero__side {
+    grid-column: 1;
+    max-width: none;
+  }
+
+  .hero__caps {
+    font-size: clamp(2.1rem, 12vw, 4rem);
+  }
+
+  .home-pitch__grid,
+  .home-steps__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .home-steps__grid {
+    gap: var(--gap);
+  }
+
+  .sticky-heading {
+    position: static;
+  }
+}

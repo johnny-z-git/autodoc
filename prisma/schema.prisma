@@ -1,0 +1,120 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  CUSTOMER
+  STAFF
+}
+
+enum PendingAuthStatus {
+  PENDING
+  COMPLETED
+  CANCELED
+  EXPIRED
+}
+
+enum RequestStatus {
+  NEW
+  CONFIRMED
+  PICKUP_SCHEDULED
+  IN_PROGRESS
+  READY
+  DELIVERED
+  CANCELLED
+}
+
+model User {
+  id         String   @id @default(cuid())
+  telegramId String   @unique
+  username   String?
+  firstName  String?
+  lastName   String?
+  email      String?
+  phone      String?
+  role       Role     @default(CUSTOMER)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  sessions      Session[]
+  pendingAuths  PendingAuth[]
+  repairRequests RepairRequest[]
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  userId    String
+  tokenHash String   @unique
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([expiresAt])
+}
+
+model PendingAuth {
+  id        String            @id @default(cuid())
+  nonce     String            @unique
+  status    PendingAuthStatus @default(PENDING)
+  userId    String?
+  expiresAt DateTime
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  user User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+
+  @@index([status, expiresAt])
+}
+
+model Service {
+  id            String   @id @default(cuid())
+  slug          String   @unique
+  title         String
+  description   String
+  basePriceFrom Int
+  durationHint  String
+  imageUrl      String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model RepairRequest {
+  id                 String        @id @default(cuid())
+  userId             String
+  status             RequestStatus @default(NEW)
+
+  brand              String
+  model              String
+  year               Int
+  licensePlate       String
+  address            String
+  preferredSlot      DateTime
+  preferredSlotEnd   DateTime?
+  needLoaner         Boolean       @default(false)
+  problemDescription String
+  serviceTypes       String[]      @default([])
+  contactPhone       String
+  contactEmail       String?
+  courierComment     String?
+
+  vin                String?
+  estimatedPrice     Int?
+  finalPrice         Int?
+  loanerCarInfo      String?
+  staffNotes         String?
+
+  createdAt          DateTime      @default(now())
+  updatedAt          DateTime      @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+  @@index([status])
+}

@@ -1,0 +1,54 @@
+.tg-login {
+  max-width: 34rem;
+}
+
+.tg-login__title {
+  margin-top: 0.75rem;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  letter-spacing: -0.01em;
+}
+
+.tg-login__lead {
+  margin-top: 1rem;
+  color: var(--text-muted);
+  font-size: 1.0625rem;
+}
+
+.tg-login__steps {
+  margin-top: 1.75rem;
+  padding-left: 1.25rem;
+  list-style: decimal;
+  color: var(--text-muted);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tg-login__actions {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+}
+
+.tg-login__deeplink {
+  color: var(--accent);
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.tg-login__status,
+.tg-login__ok {
+  margin-top: 1.25rem;
+  color: var(--text-muted);
+}
+
+.tg-login__error {
+  margin-top: 1.25rem;
+  color: var(--accent);
+}
+
+.tg-login__ok {
+  color: #6fbf73;
+}

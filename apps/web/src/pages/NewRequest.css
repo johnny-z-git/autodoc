@@ -1,0 +1,10 @@
+.new-request-page__title {
+  margin-top: 0.75rem;
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  letter-spacing: -0.01em;
+}
+
+.new-request-page__lead {
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}

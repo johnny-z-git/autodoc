@@ -1,0 +1,213 @@
+:root {
+  --bg: #0a0a0a;
+  --bg-elevated: #121212;
+  --bg-soft: #1a1a1a;
+  --bg-light: #f2ebe3;
+  --text: #f2ebe3;
+  --text-muted: #9a9288;
+  --text-on-light: #121212;
+  --accent: #c43c2e;
+  --accent-hover: #e04a3a;
+  --accent-soft: rgba(196, 60, 46, 0.18);
+  --border: rgba(242, 235, 227, 0.12);
+  --border-strong: rgba(242, 235, 227, 0.28);
+  --font-display: 'Unbounded', sans-serif;
+  --font-body: 'Onest', sans-serif;
+  --ease: cubic-bezier(0.215, 0.61, 0.355, 1);
+  --duration-fast: 0.3s;
+  --duration-mid: 0.5s;
+  --duration-slow: 0.6s;
+  --container: min(1560px, calc(100% - 48px));
+  --section-y: clamp(80px, 10vw, 160px);
+  --gap: 16px;
+  --gap-lg: 30px;
+  --header-h: 72px;
+  color-scheme: dark;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  background-color: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  transition:
+    background-color var(--duration-slow) var(--ease),
+    color var(--duration-slow) var(--ease);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  line-height: 0.95;
+  margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.container {
+  width: var(--container);
+  margin-inline: auto;
+}
+
+.section {
+  padding-block: var(--section-y);
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.lead {
+  font-size: 1.125rem;
+  color: var(--text-muted);
+  max-width: 36rem;
+}
+
+.divider {
+  color: var(--accent);
+  margin-inline: 0.35em;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+body.theme-light {
+  --bg: #f2ebe3;
+  --bg-elevated: #fffdf9;
+  --bg-soft: #e8e0d6;
+  --text: #121212;
+  --text-muted: #5c564e;
+  --border: rgba(18, 18, 18, 0.12);
+  --border-strong: rgba(18, 18, 18, 0.24);
+  background-color: var(--bg);
+  color: var(--text);
+  color-scheme: light;
+}
+
+body.theme-light .eyebrow {
+  color: var(--accent);
+}
+
+/* Явные цвета — иначе color-mix(var(--bg)) не интерполируется */
+.site-header {
+  background-color: rgba(10, 10, 10, 0.88);
+  border-bottom-color: rgba(242, 235, 227, 0.12);
+  color: #f2ebe3;
+  transition:
+    background-color var(--duration-slow) var(--ease),
+    border-color var(--duration-slow) var(--ease),
+    color var(--duration-slow) var(--ease);
+}
+
+body.theme-light .site-header {
+  background-color: rgba(242, 235, 227, 0.9);
+  border-bottom-color: rgba(18, 18, 18, 0.12);
+  color: #121212;
+}
+
+.site-footer {
+  background-color: #121212;
+  border-top-color: rgba(242, 235, 227, 0.12);
+  color: #f2ebe3;
+  transition:
+    background-color var(--duration-slow) var(--ease),
+    border-color var(--duration-slow) var(--ease),
+    color var(--duration-slow) var(--ease);
+}
+
+body.theme-light .site-footer {
+  background-color: #fffdf9;
+  border-top-color: rgba(18, 18, 18, 0.12);
+  color: #121212;
+}
+
+.site-header__link,
+.site-header__user,
+.site-header__muted,
+.site-header__brand,
+.site-footer__tag,
+.site-footer__nav a,
+.site-footer__contacts a,
+.site-footer__contacts span,
+.site-footer__copy,
+.site-footer__logo {
+  transition: color var(--duration-slow) var(--ease);
+}
+
+body.theme-light .site-header__link,
+body.theme-light .site-header__muted {
+  color: #5c564e;
+}
+
+body.theme-light .site-header__link:hover,
+body.theme-light .site-header__link.is-active,
+body.theme-light .site-header__brand,
+body.theme-light .site-header__user {
+  color: #121212;
+}
+
+body.theme-light .site-header__link.is-active {
+  color: var(--accent);
+}
