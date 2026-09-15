@@ -23,9 +23,9 @@ export function Footer() {
         </nav>
 
         <div className="site-footer__contacts">
-          <a href="tel:+79991234567">+7 999 123-45-67</a>
+          <a href="tel:+79991234567">+996 555-555-555</a>
           <a href="mailto:hello@autodoc.local">hello@autodoc.local</a>
-          <span>Москва и область</span>
+          <span>Бишкек</span>
         </div>
       </div>
       <div className="site-footer__copy container">
