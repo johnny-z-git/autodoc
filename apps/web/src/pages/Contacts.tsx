@@ -53,7 +53,7 @@ export function ContactsPage() {
           <ul className="contacts-page__info">
             <li>
               <span>Телефон</span>
-              <a href="tel:+79991234567">+7 999 123-45-67</a>
+              <a href="tel:+79991234567">+996 555-555-555</a>
             </li>
             <li>
               <span>Email</span>
@@ -65,7 +65,7 @@ export function ContactsPage() {
             </li>
             <li>
               <span>Зона</span>
-              <span>Москва и область</span>
+              <span>Бишкек</span>
             </li>
           </ul>
         </div>

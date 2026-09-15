@@ -31,11 +31,7 @@ export function ServicesPage() {
   return (
     <section className="services-page section">
       <div className="container">
-        <p className="eyebrow">Каталог / API</p>
         <h1 className="services-page__title">Услуги AutoDoc</h1>
-        <p className="lead services-page__lead">
-          Данные приходят с сервера <code>GET /api/services</code>. Цены — ориентир «от».
-        </p>
 
         {loading ? <p className="services-page__state">Загружаем…</p> : null}
         {error ? (
